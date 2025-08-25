@@ -312,41 +312,70 @@
             text-align: center;
             line-height: 1.4;
         }
-        .home-button {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        z-index: 1000;
-        font-size: 24px;
-    }
-    
-    .home-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-    }
-    
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-        .home-button {
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            font-size: 20px;
+        .button-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
         }
-    }
+        
+        .back-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button::before {
+            content: "←";
+        }
+        
+        .home-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 24px;
+        }
+        
+        .back-button:hover, .home-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .button-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .back-button, .home-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -579,9 +608,23 @@
                 </div>
             </div>
             
-            <a href="index.html" class="home-button" title="返回首頁">
-                <i class="fas fa-home"></i>
-            </a>
+            <div class="button-container">
+        <button class="back-button" onclick="goBack()" title="返回上一页"></button>
+        <a href="index.html" class="home-button" title="返回主页">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+
+    <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // 如果没有历史记录，可以重定向到首页或其他备用页面
+                window.location.href = "index.html";
+            }
+        }
+    </script>
 
             <div class="footer">
                 <p>關注家庭照顧者的壓力與需求，提供適當支持與資源</p>

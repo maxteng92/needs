@@ -305,6 +305,70 @@
             font-size: 0.9rem;
         }
         
+        .button-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .back-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button::before {
+            content: "←";
+        }
+        
+        .home-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-size: 24px;
+        }
+        
+        .back-button:hover, .home-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .button-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .back-button, .home-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
         /* 响应式设计 */
         @media (max-width: 768px) {
             .nav-links {
@@ -333,24 +397,6 @@
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-hands-helping"></i>
-                    <span>照顧服務整合平台</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">首頁</a></li>
-                    <li><a href="carer.html">照顧者之家</a></li>
-                    <li><a href="cared.html">被照顧者之家</a></li>
-                    <li><a href="athome.html">居家環境</a></li>
-                    <li><a href="medic.html">醫療在那兒</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
     <!-- 英雄区域 -->
     <section class="hero">
@@ -489,34 +535,23 @@
             </div>
         </div>
     </section>
+    <div class="button-container">
+        <button class="back-button" onclick="goBack()" title="返回上一页"></button>
+        <a href="index.html" class="home-button" title="返回主页">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
 
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>關於我們</h3>
-                    <p>我們是專業的照顧服務整合平台，致力於為照顧者與被照顧者提供最優質的服務與支持。</p>
-                </div>
-                <div class="footer-section">
-                    <h3>服務項目</h3>
-                    <p>照顧者需求評估</p>
-                    <p>被照顧者照顧計劃</p>
-                    <p>居家環境改善建議</p>
-                    <p>醫療資源整合</p>
-                </div>
-                <div class="footer-section">
-                    <h3>聯絡我們</h3>
-                    <p><i class="fas fa-phone"></i> 電話: (02) 2312-3456</p>
-                    <p><i class="fas fa-envelope"></i> 郵箱: maxteng@ntuh.gov.tw</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 地址: 窩沒有</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 照顧服務整合平台 版權所有</p>
-            </div>
-        </div>
-    </footer>
+    <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // 如果没有历史记录，可以重定向到首页或其他备用页面
+                window.location.href = "index.html";
+            }
+        }
+    </script>
 
     <script>
         // 简单的滚动效果
