@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照顧服務整合平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #4cd964;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* 英雄区域样式 */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4cd964;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(76, 217, 100, 0.3);
+        }
+        
+        .btn:hover {
+            background: #3cb653;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(76, 217, 100, 0.4);
+        }
+        
+        /* 服务卡片区域 */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: inline-block;
+            height: 90px;
+            width: 90px;
+            line-height: 90px;
+            border-radius: 50%;
+        }
+        
+        .carer-icon {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+        }
+        
+        .cared-icon {
+            background-color: rgba(155, 89, 182, 0.1);
+            color: #9b59b6;
+        }
+        
+        .home-icon {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+        }
+        
+        .medic-icon {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .service-card p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        /* 功能区域样式 */
+        .features {
+            background-color: #e8f4fc;
+            padding: 80px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .feature p {
+            color: #7f8c8d;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ecf0f1;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .services-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>照顧服務整合平台</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="carer.html">照顧者需求</a></li>
+                    <li><a href="cared.html">被照顧者需求</a></li>
+                    <li><a href="athome.html">居家環境需求</a></li>
+                    <li><a href="medic.html">醫療可近性</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>全方位照顧服務解決方案</h1>
+                <p>我們提供整合性的照顧服務平台，滿足照顧者、被照顧者、居家環境和醫療可近性的多元需求，讓照顧之路更加順暢。</p>
+                <a href="#services" class="btn">開始探索</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务卡片区域 -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>我們的服務</h2>
+                <p>點擊以下服務區塊，了解更多關於我們提供的各項照顧服務</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon carer-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>照顧者需求</h3>
+                    <p>提供照顧者培訓、心理支持、休息服務和資源連結，減輕照顧負擔。</p>
+                    <a href="carer.html" class="btn">了解更多</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon cared-icon">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h3>被照顧者需求</h3>
+                    <p>評估並滿足被照顧者的生理、心理和社交需求，提供個人化照顧計劃。</p>
+                    <a href="cared.html" class="btn">了解更多</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon home-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>居家環境需求</h3>
+                    <p>居家安全評估、無障礙空間規劃和輔具建議，打造安全舒適的生活環境。</p>
+                    <a href="athome.html" class="btn">了解更多</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon medic-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>醫療可近性</h3>
+                    <p>醫療資源整合、就醫交通協助和遠距醫療服務，提升醫療資源可近性。</p>
+                    <a href="medic.html" class="btn">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能区域 -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>平台特色</h2>
+                <p>我們致力於提供最完善的照顧服務解決方案</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>一站式服務</h3>
+                    <p>整合所有照顧相關需求，從人員到環境，從醫療到心理支持，提供全面性解決方案。</p>
+                </div>
+                <div class="feature">
+                    <h3>專業團隊</h3>
+                    <p>我們的團隊包括醫生、護理師、物理治療師、職能治療師和社工等專業人員。</p>
+                </div>
+                <div class="feature">
+                    <h3>個人化計劃</h3>
+                    <p>根據每個家庭的獨特需求，量身定制最合適的照顧計劃和支持方案。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>關於我們</h3>
+                    <p>我們是專業的照顧服務整合平台，致力於為照顧者與被照顧者提供最優質的服務與支持。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>服務項目</h3>
+                    <p>照顧者需求評估</p>
+                    <p>被照顧者照顧計劃</p>
+                    <p>居家環境改善建議</p>
+                    <p>醫療資源整合</p>
+                </div>
+                <div class="footer-section">
+                    <h3>聯絡我們</h3>
+                    <p><i class="fas fa-phone"></i> 電話: (02) 1234-5678</p>
+                    <p><i class="fas fa-envelope"></i> 郵箱: service@careplatform.org</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 地址: 台北市信義區市府路1號</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 照顧服務整合平台 版權所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

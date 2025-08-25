@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭照顧者壓力與負荷 - 溫馨插畫風</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, 'Microsoft JhengHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fffaf0 0%, #fef5e7 100%);
+            color: #5a5a5a;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            padding: 45px 35px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 45px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(to right, #8bc38a, #5b8de4);
+            margin: 20px auto;
+            border-radius: 3px;
+        }
+        
+        h1 {
+            color: #2c5aa0;
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            color: #6b6b6b;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+        
+        h3 {
+            color: #2c5aa0;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .pressure-item {
+            background: #f9f9ff;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pressure-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 18px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .pressure-text {
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        
+        .decoration {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.12;
+        }
+        
+        .decoration-1 {
+            top: 50px;
+            right: 50px;
+            width: 180px;
+            height: 180px;
+            background-color: #5b8de4;
+            border-radius: 50%;
+        }
+        
+        .decoration-2 {
+            bottom: 80px;
+            left: 70px;
+            width: 120px;
+            height: 120px;
+            background-color: #ff9e6d;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        
+        .decoration-3 {
+            top: 200px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: #8bc38a;
+            border-radius: 50%;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #7a7a7a;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 1100px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* 卡片颜色变化 */
+        .card:nth-child(1) .icon {
+            background: linear-gradient(135deg, #ffe8e8 0%, #ffd9d9 100%);
+            color: #e74c3c;
+        }
+        
+        .card:nth-child(2) .icon {
+            background: linear-gradient(135deg, #e8f6ff 0%, #d9f2e8 100%);
+            color: #2ecc71;
+        }
+        
+        .card:nth-child(3) .icon {
+            background: linear-gradient(135deg, #fff8e8 0%, #fff2d9 100%);
+            color: #f39c12;
+        }
+        
+        .card:nth-child(4) .icon {
+            background: linear-gradient(135deg, #f2e8ff 0%, #ead9ff 100%);
+            color: #9b59b6;
+        }
+        
+        .card:nth-child(5) .icon {
+            background: linear-gradient(135deg, #e8f2ff 0%, #d9e8ff 100%);
+            color: #3498db;
+        }
+        
+        .card:nth-child(6) .icon {
+            background: linear-gradient(135deg, #e8f8f8 0%, #d9f2f2 100%);
+            color: #16a085;
+        }
+        
+        .card:nth-child(1) .pressure-icon {
+            color: #e74c3c;
+        }
+        
+        .card:nth-child(2) .pressure-icon {
+            color: #2ecc71;
+        }
+        
+        .card:nth-child(3) .pressure-icon {
+            color: #f39c12;
+        }
+        
+        .card:nth-child(4) .pressure-icon {
+            color: #9b59b6;
+        }
+        
+        .card:nth-child(5) .pressure-icon {
+            color: #3498db;
+        }
+        
+        .card:nth-child(6) .pressure-icon {
+            color: #16a085;
+        }
+        
+        .support-section {
+            background: #f0f8ff;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .support-title {
+            color: #2c5aa0;
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+        
+        .support-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .support-item {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 180px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .support-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e8f2ff 0%, #d9e8ff 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #2c5aa0;
+            font-size: 25px;
+        }
+        
+        .support-text {
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="decoration decoration-3"></div>
+        
+        <div class="content">
+            <div class="header">
+                <h1>家庭照顧者壓力與負荷</h1>
+                <h2>六大面向支持與關懷</h2>
+            </div>
+            
+            <div class="grid">
+                <!-- 身體負荷 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <h3>身體負荷</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <div class="pressure-text">長期睡眠不足與疲勞</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-first-aid"></i>
+                            </div>
+                            <div class="pressure-text">身體勞損與健康問題</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="pressure-text">日常照護工作的體力消耗</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 心理情緒負荷 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>心理情緒負荷</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-sad-tear"></i>
+                            </div>
+                            <div class="pressure-text">焦慮、憂鬱與無助感</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-angry"></i>
+                            </div>
+                            <div class="pressure-text">挫折感與情緒波動</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-stress"></i>
+                            </div>
+                            <div class="pressure-text">長期壓力與情緒耗竭</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 社交限制 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>社交限制</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-calendar-times"></i>
+                            </div>
+                            <div class="pressure-text">個人時間與空間受限</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-users-slash"></i>
+                            </div>
+                            <div class="pressure-text">社交活動減少與孤立感</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-heart-broken"></i>
+                            </div>
+                            <div class="pressure-text">人際關係緊張與疏離</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 經濟壓力 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>經濟壓力</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="pressure-text">醫療與照護費用負擔</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="pressure-text">工作收入減少或中斷</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-chart-line-down"></i>
+                            </div>
+                            <div class="pressure-text">長期經濟不安全感</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 家庭關係壓力 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>家庭關係壓力</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-comment-alt-minus"></i>
+                            </div>
+                            <div class="pressure-text">家庭角色與責任衝突</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-handshake-alt-slash"></i>
+                            </div>
+                            <div class="pressure-text">家人間支持不足</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-balance-scale-left"></i>
+                            </div>
+                            <div class="pressure-text">照顧責任分配不均</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 工作與生涯影響 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>工作與生涯影響</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-business-time"></i>
+                            </div>
+                            <div class="pressure-text">工作時間與效率受影響</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-career-time"></i>
+                            </div>
+                            <div class="pressure-text">職業發展受限</div>
+                        </div>
+                        <div class="pressure-item">
+                            <div class="pressure-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="pressure-text">工作與照顧難以平衡</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="support-section">
+                <h3 class="support-title">照顧者支持資源</h3>
+                <div class="support-items">
+                    <div class="support-item">
+                        <div class="support-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="support-text">喘息服務與臨托照顧</div>
+                    </div>
+                    <div class="support-item">
+                        <div class="support-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="support-text">支持團體與心理諮商</div>
+                    </div>
+                    <div class="support-item">
+                        <div class="support-icon">
+                            <i class="fas fa-book-medical"></i>
+                        </div>
+                        <div class="support-text">照護技巧訓練課程</div>
+                    </div>
+                    <div class="support-item">
+                        <div class="support-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="support-text">經濟補助與資源轉介</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>關注家庭照顧者的壓力與需求，提供適當支持與資源</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>被照顧者需求 - 溫馨插畫風</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, 'Microsoft JhengHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fffaf0 0%, #fef5e7 100%);
+            color: #5a5a5a;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            padding: 45px 35px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 45px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(to right, #8bc38a, #5b8de4);
+            margin: 20px auto;
+            border-radius: 3px;
+        }
+        
+        h1 {
+            color: #2c5aa0;
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #e8f2ff 0%, #d9e8ff 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            color: #2c5aa0;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(91, 141, 228, 0.2);
+            flex-shrink: 0;
+        }
+        
+        h2 {
+            color: #2c5aa0;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .need-item {
+            background: #f9f9ff;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .need-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: #5b8de4;
+            font-size: 18px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .need-text {
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        
+        .decoration {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.12;
+        }
+        
+        .decoration-1 {
+            top: 50px;
+            right: 50px;
+            width: 180px;
+            height: 180px;
+            background-color: #5b8de4;
+            border-radius: 50%;
+        }
+        
+        .decoration-2 {
+            bottom: 80px;
+            left: 70px;
+            width: 120px;
+            height: 120px;
+            background-color: #ff9e6d;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        
+        .decoration-3 {
+            top: 200px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: #8bc38a;
+            border-radius: 50%;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #7a7a7a;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 1100px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .card-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* 卡片颜色变化 */
+        .card:nth-child(1) .icon {
+            background: linear-gradient(135deg, #e8f2ff 0%, #d9e8ff 100%);
+            color: #2c5aa0;
+        }
+        
+        .card:nth-child(2) .icon {
+            background: linear-gradient(135deg, #ffe8f0 0%, #ffd9e8 100%);
+            color: #e91e63;
+        }
+        
+        .card:nth-child(3) .icon {
+            background: linear-gradient(135deg, #e8f6ff 0%, #d9f2e8 100%);
+            color: #4caf50;
+        }
+        
+        .card:nth-child(4) .icon {
+            background: linear-gradient(135deg, #fff8e8 0%, #fff2d9 100%);
+            color: #ff9800;
+        }
+        
+        .card:nth-child(5) .icon {
+            background: linear-gradient(135deg, #f2e8ff 0%, #ead9ff 100%);
+            color: #9c27b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="decoration decoration-3"></div>
+        
+        <div class="content">
+            <div class="header">
+                <h1>被照顧者需求</h1>
+            </div>
+            
+            <div class="grid">
+                <!-- 生理與健康需求 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h2>生理與健康需求</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <div class="need-text">疾病管理與醫療照護</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="need-text">日常生活協助</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <div class="need-text">疼痛與不適控制</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 安全需求 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h2>安全需求</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="need-text">環境安全</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="need-text">緊急應變</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 心理需求 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h2>心理需求</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <div class="need-text">情緒支持</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="need-text">尊嚴與自主</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-peace"></i>
+                            </div>
+                            <div class="need-text">安寧需求</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 社會互動需求 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h2>社會互動需求</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-home-heart"></i>
+                            </div>
+                            <div class="need-text">家庭支持</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="need-text">社交活動</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="need-text">同儕支持</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 生活品質需求 -->
+                <div class="card" style="grid-column: span 2; max-width: 600px; margin: 0 auto;">
+                    <div class="card-header">
+                        <div class="icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h2>生活品質需求</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="need-text">興趣與娛樂</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-couch"></i>
+                            </div>
+                            <div class="need-text">舒適環境</div>
+                        </div>
+                        <div class="need-item">
+                            <div class="need-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="need-text">營養與飲食</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>關注被照顧者的全面需求，提供有溫度的照護服務</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
