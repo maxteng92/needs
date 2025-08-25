@@ -312,6 +312,41 @@
             text-align: center;
             line-height: 1.4;
         }
+        .home-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        font-size: 24px;
+    }
+    
+    .home-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+        .home-button {
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+    }
     </style>
 </head>
 <body>
@@ -544,6 +579,10 @@
                 </div>
             </div>
             
+            <a href="index.html" class="home-button" title="返回首頁">
+                <i class="fas fa-home"></i>
+            </a>
+
             <div class="footer">
                 <p>關注家庭照顧者的壓力與需求，提供適當支持與資源</p>
             </div>
